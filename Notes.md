@@ -1,4 +1,4 @@
-These are my notes. 
+Team Notes: 
 
 Database ideas: 
 
