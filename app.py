@@ -9,7 +9,7 @@ def home():
 
 @app.route("/register", methods=["POST","GET"])
 def register():
-        if (request.method = "GET"):
+        if (request.method == "GET"):
                 return render_template("register.html")
         else:
                 username = request.form["username"]
