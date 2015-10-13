@@ -4,7 +4,8 @@ x = os.path.isfile("StoryBase.db")
 
 connect = sqlite3.connect("StoryBase.db")
 curs = connect.cursor()
-q = """CREATE TABLE Login(
+q = """
+CREATE TABLE Login(
    Username TEXT,
    Password TEXT,
 );
