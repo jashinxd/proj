@@ -13,7 +13,7 @@ def register():
                 return render_template("register.html")
         else:
                 username = request.form["username"]
-		password = request.form["password"]
+                password = request.form["password"]
 
 @app.route("/login", methods = ["POST", "GET"])
 def login():

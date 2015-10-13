@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>StoryBase</title>
+  </head>
+  <body bgcolor="#CEECF5">
+  <body>
+    <h1 align="center">StoryBase</h1>
+    <p>
+      Welcome to StoryBase, a dynamic story creation and editing website. <br>
+      
+      <table>
+	<tr>
+	  
+      Please login <a href = "/login">Login </a> <br>
+      or register <a href = "/register">Register </a>
+    </p>
+
+  </body>
+</html>
