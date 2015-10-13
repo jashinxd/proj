@@ -8,7 +8,7 @@ curs = connect.cursor()
 q = """
 CREATE TABLE Login(
    Username TEXT,
-   Password TEXT,
+   Password TEXT
 );"""
 if not x:
    curs.execute(q)
@@ -22,14 +22,14 @@ q = """CREATE TABLE stories(
    Name TEXT,
    Username TEXT,
    ID REAL,
-   Date TEXT,
+   Date TEXT
 );"""
 if not x:
    curs.execute(q)
    conn.commit()
 q = """CREATE TABLE comments(storyID REAL,
    CContent TEXT,
-   Date TEXT,
+   Date TEXT
 );
 """
 if not x:
