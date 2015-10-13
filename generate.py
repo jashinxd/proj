@@ -18,7 +18,7 @@ CREATE TABLE stories(
 );
    CREATE TABLE comments(storyID REAL,
    CContent TEXT,
-   Date TEXT
+   Date TEXT,
 );
 """
 if not x:
