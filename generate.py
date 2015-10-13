@@ -4,6 +4,7 @@ x = os.path.isfile("StoryBase.db")
 
 connect = sqlite3.connect("StoryBase.db")
 curs = connect.cursor()
+
 q = """
 CREATE TABLE Login(
    Username TEXT,
@@ -23,6 +24,7 @@ CREATE TABLE stories(
 );
 """
 if not x:
+   print q
    curs.execute(q)
    conn.commit()
 
