@@ -1,6 +1,6 @@
 import sqlite3, os.path
 
-x = os.path.isfile(StoryBase.db)
+x = os.path.isfile("StoryBase.db")
 
 connect = sqlite3.connect("StoryBase.db")
 curs = connect.cursor()
