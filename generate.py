@@ -9,16 +9,25 @@ q = """
 CREATE TABLE Login(
    Username TEXT,
    Password TEXT,
-);
-insert into Login values ("APCS","B");
-CREATE TABLE stories(
+);"""
+if not x:
+   curs.execute(q)
+   conn.commit()
+q = """insert into Login values ("APCS","B");"""
+if not x:
+   curs.execute(q)
+   conn.commit()
+q = """CREATE TABLE stories(
    Content TEXT, 
    Name TEXT,
    Username TEXT,
    ID REAL,
    Date TEXT,
-);
-   CREATE TABLE comments(storyID REAL,
+);"""
+if not x:
+   curs.execute(q)
+   conn.commit()
+q = """CREATE TABLE comments(storyID REAL,
    CContent TEXT,
    Date TEXT,
 );
