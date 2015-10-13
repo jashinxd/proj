@@ -8,6 +8,7 @@ q = """CREATE TABLE Login(
    Username TEXT,
    Password TEXT,
 );
+insert into Login values ("APCS","B");
 CREATE TABLE stories(
    Content TEXT, 
    Name TEXT,
