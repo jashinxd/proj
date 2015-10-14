@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import authen
 
 app = Flask(__name__)
@@ -23,7 +23,9 @@ def login():
 	else:
 		username = request.form["username"]
 		password = request.form["password"]
-		
+                if (authen.authenticate(username, password)){
+                        return redirect("/storypage")
+                return render_template("wrongpassword.html")
 		#Authenticate, do something
 		return render_template("login.html") + "Username entered: " + username + "<br> Password entered:" + password		
 
