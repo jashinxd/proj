@@ -32,6 +32,18 @@ def login():
                         error = "Your Username or Password is incorrect. Please try again."
                         return render_template("login.html", problem = error )
 	
+@app.route("/storypage")
+def storypage():
+    q="""
+    SELECT *
+    FROM Stories
+    """
+    conn = sqlite3.connect("StoryBase.db")
+    c = conn.cursor()
+    result = c.execute(q)
+    
+    return render_template("storypage.html", story=result)
+
 if (__name__ == "__main__"):
     app.debug = True
     app.run(host='0.0.0.0', port=8000)
