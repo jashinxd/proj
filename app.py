@@ -42,7 +42,30 @@ def storypage():
     conn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
     result = c.execute(q)
-    return render_template("storypage.html", result=result)
+    MainHTML = ""
+    for r in result:
+    	StoryHTML = """
+    	<br>
+	<h3> '%s' </h3>
+    	by '%s' <br>
+    	'%s'
+    	<p>
+      	'%s'
+    	</p><br><hr> Comments: <br>""" % (r[1],r[2],r[0],r[4])
+    	q="""
+	    SELECT *
+    	FROM comments where storyID = '%s'
+    	""" % (r[3])
+    	comments = c.execute(q)
+    	for c in comments:
+    		commentHTML = """
+    		<br>
+    		'%s' on '%s'
+    		<br>""" % (c[1],c[2])
+    		StoryHTML = StoryHTML + commentHTML
+    	MainHTML = MainHTML + StoryHTML
+    		
+    return render_template("storypage.html", result=MainHTML)
 
 if (__name__ == "__main__"):
     app.debug = True
