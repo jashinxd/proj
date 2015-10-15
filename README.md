@@ -8,4 +8,4 @@ Albert -- Backend
 
 Rong -- Middleware
 
-We are splitting web design
+Ari and Rong -- splitting web design
