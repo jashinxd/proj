@@ -24,10 +24,10 @@ q = """CREATE TABLE Stories(
    ID REAL,
    Date TEXT
 );"""
-q = """insert into Stories values ("Once upon a thyme","Untitled","Mokrejs",0,"October 15th");"""
 #if not x:
 curs.execute(q)
 connect.commit()
+q = """insert into Stories values ("Once upon a thyme","Untitled","Mokrejs",0,"October 15th");"""
 #if not x:
 curs.execute(q)
 connect.commit()
