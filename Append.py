@@ -3,18 +3,21 @@ import sqlite3
 def register(username,password):
     conn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
-    q = """insert into Login values (""" + username + "," + password + """);"""
+    q = """insert into Login values ('%s','%s');""" % (username,password)
     c.execute(q)
+    conn.commit()
     
 def comment(storyID, CContent, Date):
     conn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
-    q = """insert into comments values (""" + storyID + "," + CContent + "," + Date + """);"""
+    q = """insert into comments values ('%s','%s','%s');""" % (storyID, CContent, Date)
     c.execute(q)
+    conn.commit()
     
 def addStory(Content, Name, Username, ID, Date):
     conn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
     q = """insert into Stories values (""" + Content + "," + Name + "," + Username + "," +  ID + "," +  Date + """);"""
     c.execute(q)
+    conn.commit()
 
