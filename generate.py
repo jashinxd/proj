@@ -17,13 +17,17 @@ q = """insert into Login values ("APCS","B");"""
 #if not x:
 curs.execute(q)
 connect.commit()
-q = """CREATE TABLE stories(
+q = """CREATE TABLE Stories(
    Content TEXT, 
    Name TEXT,
    Username TEXT,
    ID REAL,
    Date TEXT
 );"""
+q = """insert into Stories values ("Once upon a thyme","Untitled","Mokrejs",0,"October 15th");"""
+#if not x:
+curs.execute(q)
+connect.commit()
 #if not x:
 curs.execute(q)
 connect.commit()
