@@ -7,7 +7,7 @@ def authenticate(username,password):
     SELECT Username, Password
     FROM Login
     WHERE Login.Username = '%s'
-    """ % username 
+    """ % (username)
     result = c.execute(q)
     for r in result:
         if r[1] == password:

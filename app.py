@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import authen
+import Append
 
 app = Flask(__name__)
 
@@ -15,6 +16,8 @@ def register():
         else:
                 username = request.form["username"]
                 password = request.form["password"]
+                Append.register(username,password)
+                return redirect(url_for("login"))
 
 @app.route("/login", methods = ["POST", "GET"])
 def login():
