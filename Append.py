@@ -17,7 +17,7 @@ def comment(storyID, CContent, Date):
 def addStory(Content, Name, Username, ID, Date):
     conn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
-    q = """insert into Stories values (""" + Content + "," + Name + "," + Username + "," +  ID + "," +  Date + """);"""
+    q = """insert into Stories values ('%s','%s','%s','%s','%s');""" % (Content,Name,Username,ID,Date)
     c.execute(q)
     conn.commit()
 
