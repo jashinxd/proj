@@ -41,8 +41,7 @@ def storypage():
     conn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
     result = c.execute(q)
-    
-    return render_template("storypage.html", story=result)
+    return render_template("storypage.html", result=result)
 
 if (__name__ == "__main__"):
     app.debug = True

@@ -4,33 +4,15 @@
 
   <body bgcolor="#CEECF5">
 
-    {%if problem %}
-      <h3>{{problem}}</h3>
-      
-    {% endif %}
-
   <body style="font-size:150%"> 
-
-    {{story}}
-    <!--
-    <form method = "POST">
-      <table style="font-size:100%">
-	<tr>
-	  <td> Username: </td>
-	  <td><input type="text" name="username"> </td>
-	</tr>
-	<tr>
-    	  <td> Password: </td>
-	  <td> <input type="text" name="password"> </td>
-	</tr>
-	<tr>
-	  <td>
-	    <input type="submit" name="button" value="submit">
-	  </td>
-	</tr>
-      </table>
-    </form>
-    -->
+    {% for r in result %}
+    <h3>{{r[1]}}</h3>
+    <h4>by {{r[2]}}</h4>
+    <h5>{{r[4]}}</h5><br>
+    <p>
+      {{r[0]}}
+    </p>
+    {% endfor %}
   </body>
 </html>
 
