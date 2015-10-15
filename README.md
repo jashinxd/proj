@@ -6,6 +6,6 @@ Ari -- Leader
 
 Albert -- Backend 
 
-Rong -- Middleware
+Ari -- Middleware
 
-Ari and Rong -- splitting web design
+Rong -- Frontend
