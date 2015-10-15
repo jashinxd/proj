@@ -10,13 +10,13 @@ CREATE TABLE Login(
    Username TEXT,
    Password TEXT
 );"""
-if not x:
-   curs.execute(q)
-   conn.commit()
+#if not x:
+curs.execute(q)
+connect.commit()
 q = """insert into Login values ("APCS","B");"""
-if not x:
-   curs.execute(q)
-   conn.commit()
+#if not x:
+curs.execute(q)
+connect.commit()
 q = """CREATE TABLE stories(
    Content TEXT, 
    Name TEXT,
@@ -24,16 +24,16 @@ q = """CREATE TABLE stories(
    ID REAL,
    Date TEXT
 );"""
-if not x:
-   curs.execute(q)
-   conn.commit()
+#if not x:
+curs.execute(q)
+connect.commit()
 q = """CREATE TABLE comments(storyID REAL,
    CContent TEXT,
    Date TEXT
 );
 """
-if not x:
-   print q
-   curs.execute(q)
-   conn.commit()
+#if not x:
+#print q
+curs.execute(q)
+connect.commit()
 

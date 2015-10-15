@@ -23,13 +23,12 @@ def login():
 	else:
 		username = request.form["username"]
 		password = request.form["password"]
-                #if (authen.authenticate(username, password)){
-                #        return redirect(url_for("storypage"))
-		error = "Your Username or Password is incorrect. Please try again."
-                return render_template("login.html", problem = error )
-		#Authenticate, do something
-		#return render_template("login.html") + "Username entered: " + username + "<br> Password entered:" + password		
-
+                if (authen.authenticate(username, password)):
+                        return redirect(url_for("storypage"))
+                else:
+                        error = "Your Username or Password is incorrect. Please try again."
+                        return render_template("login.html", problem = error )
+	
 if (__name__ == "__main__"):
     app.debug = True
     app.run(host='0.0.0.0', port=8000)
