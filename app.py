@@ -45,8 +45,7 @@ def storypage():
     MainHTML = ""
     for r in result:
     	StoryHTML = """
-    	<br>
-	<h3> '%s' </h3>
+        <h3> '%s' </h3> <br>
     	by '%s' <br>
     	'%s'
     	<p>
@@ -63,7 +62,7 @@ def storypage():
     		'%s' on '%s'
     		<br>""" % (c[1],c[2])
     		StoryHTML = StoryHTML + commentHTML
-    	MainHTML = MainHTML + StoryHTML
+        MainHTML = MainHTML + StoryHTML
     		
     return render_template("storypage.html", result=MainHTML)
 
