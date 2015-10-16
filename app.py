@@ -33,8 +33,10 @@ def login():
                         error = "Your Username or Password is incorrect. Please try again."
                         return render_template("login.html", problem = error )
 	
-@app.route("/storypage")
+@app.route("/storypage", methods=["POST","GET"])
 def storypage():
+    if (request.method == "POST"):
+        Append.comment(request.form["button"],request.form["comment"],Date)
     q="""
     SELECT *
     FROM Stories
@@ -50,7 +52,12 @@ def storypage():
     	'%s'
     	<p>
       	'%s'
-    	</p><br><hr> Comments: <br>""" % (r[1],r[2],r[0],r[4])
+    	</p><br>
+        <form method="POST">
+        Comment: <input type="text" name="comment">
+        <input type="submit" name="button" value="%s">
+        </form>
+        <hr> Comments: <br>""" % (r[1],r[2],r[0],r[4],r[3])
     	q="""
 	    SELECT *
     	FROM comments where storyID = '%s'
