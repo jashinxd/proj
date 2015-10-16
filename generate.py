@@ -10,11 +10,9 @@ CREATE TABLE Login(
    Username TEXT,
    Password TEXT
 );"""
-#if not x:
 curs.execute(q)
 connect.commit()
 q = """insert into Login values ("APCS","B");"""
-#if not x:
 curs.execute(q)
 connect.commit()
 q = """CREATE TABLE Stories(
@@ -24,11 +22,9 @@ q = """CREATE TABLE Stories(
    ID REAL,
    Date TEXT
 );"""
-#if not x:
 curs.execute(q)
 connect.commit()
 q = """insert into Stories values ("Once upon a thyme","Untitled","Mokrejs",0,"October 15th");"""
-#if not x:
 curs.execute(q)
 connect.commit()
 q = """CREATE TABLE comments(storyID REAL,
@@ -36,8 +32,6 @@ q = """CREATE TABLE comments(storyID REAL,
    Date TEXT
 );
 """
-#if not x:
-#print q
 curs.execute(q)
 connect.commit()
 
