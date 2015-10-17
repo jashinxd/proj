@@ -36,7 +36,7 @@ def login():
 @app.route("/storypage", methods=["POST","GET"])
 def storypage():
     if (request.method == "POST"):
-        Append.comment(request.form["button"],request.form["comment"],Date)
+        Append.comment(request.form["button"],request.form["comment"],"October 17")
     q="""
     SELECT *
     FROM Stories
@@ -47,27 +47,26 @@ def storypage():
     MainHTML = ""
     for r in result:
     	StoryHTML = """
-        <h3> '%s' </h3> <br>
-    	by '%s' <br>
-    	'%s'
-    	<p>
-      	'%s'
-    	</p><br>
+        <h3> %s<br> by %s <br> on %s</h3>
+        <p>
+    	%s
+        </p>
+        <hr>
         <form method="POST">
         Comment: <input type="text" name="comment">
-        <input type="submit" name="button" value="%s">
+        <input type="submit" name="button" value=%s>
         </form>
-        <hr> Comments: <br>""" % (r[1],r[2],r[0],r[4],r[3])
+        Comments: <br><hr>""" % (r[1],r[2],r[4],r[0],r[3])
     	q="""
-	    SELECT *
-    	FROM comments where storyID = '%s'
+        SELECT *
+    	FROM comments where storyID = %s
     	""" % (r[3])
     	comments = c.execute(q)
     	for c in comments:
     		commentHTML = """
-    		<br>
-    		'%s' on '%s'
-    		<br>""" % (c[1],c[2])
+    		%s on %s
+                <hr>
+                """ % (c[1],c[2])
     		StoryHTML = StoryHTML + commentHTML
         MainHTML = MainHTML + StoryHTML
     		

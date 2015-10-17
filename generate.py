@@ -12,9 +12,6 @@ CREATE TABLE Login(
 );"""
 curs.execute(q)
 connect.commit()
-q = """insert into Login values ("APCS","B");"""
-curs.execute(q)
-connect.commit()
 q = """CREATE TABLE Stories(
    Content TEXT, 
    Name TEXT,
