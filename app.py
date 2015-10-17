@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 import authen
 import Append
+import datetime
 
 app = Flask(__name__)
 
@@ -36,7 +37,7 @@ def login():
 @app.route("/storypage", methods=["POST","GET"])
 def storypage():
     if (request.method == "POST"):
-        Append.comment(request.form["button"],request.form["comment"],"October 17")
+        Append.comment(request.form["button"],request.form["comment"],datetime.date.today().strftime("%B %d, %Y"))
     q="""
     SELECT *
     FROM Stories
