@@ -48,29 +48,40 @@ def storypage():
     result = c.execute(q)
     MainHTML = ""
     for r in result:
-    	StoryHTML = """
-        <h3> %s<br> by %s <br> on %s</h3>
-        <p>
-    	%s
-        </p>
-        <hr>
+    	StoryHTML = """ 
+	<table>
+	  <tr>
+	    <td style="font-size:150%"> """ + r[1] + """
+	    </td> <td>
+	    by """+r[2]+"""
+	    </td> <td>""" + r[4] +"""
+	    </td> 
+	  </tr><tr>
+	    <td colspan="3">
+	       """+ r[0]+ """ 
+	    </td>
+	  </tr>
+	</table>
+        <hr> 
         <form method="POST">
-        Comment: <input type="text" name="comment">
+        Add a Comment: <input type="text" name="comment">
         <input type="submit" name="button" value=%s>
         </form>
-        Comments: <br><hr>""" % (r[1],r[2],r[4],r[0],r[3])
+        Comments: <br><hr>""" % (r[3])
     	q="""
         SELECT *
     	FROM comments where storyID = %s
     	""" % (r[3])
     	comments = c.execute(q)
     	for c in comments:
+		StoryHTML += '<p style="font-size:70%">'
     		commentHTML = """
-    		%s on %s
+    		%s <span style="color: #ff0000"> on %s </span>
                 <hr>
                 """ % (c[1],c[2])
+		commentHTML += "</p>"
     		StoryHTML = StoryHTML + commentHTML
-        MainHTML = MainHTML + StoryHTML
+        MainHTML = MainHTML + StoryHTML    		
         
     return render_template("storypage.html", result=MainHTML)
 
