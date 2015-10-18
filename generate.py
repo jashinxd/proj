@@ -2,7 +2,7 @@ import sqlite3, os.path
 
 x = os.path.isfile("StoryBase.db")
 
-if x:
+if not x:
    connect = sqlite3.connect("StoryBase.db")
    curs = connect.cursor()
    List = ["""
