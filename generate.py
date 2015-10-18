@@ -21,9 +21,6 @@ q = """CREATE TABLE Stories(
 );"""
 curs.execute(q)
 connect.commit()
-q = """insert into Stories values ("Once upon a thyme","Untitled","Mokrejs",0,"October 15th");"""
-curs.execute(q)
-connect.commit()
 q = """CREATE TABLE comments(storyID REAL,
    CContent TEXT,
    Date TEXT

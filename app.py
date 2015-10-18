@@ -87,7 +87,7 @@ def addStory():
                 FROM StoryID
                 """
                 ID = c.execute(q)
-                Append.addStory(Story,Title,session['n'],ID[0],datetime.date.today().strftime("%B %d, %Y"))
+                Append.addStory(Story,Title,session['n'],1,datetime.date.today().strftime("%B %d, %Y"))
                 return redirect(url_for("storypage"))
 
 if (__name__ == "__main__"):
