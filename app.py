@@ -54,11 +54,11 @@ def storypage():
 	    <td style="font-size:150%"> """ + r[1] + """
 	    </td> <td>
 	    by """+r[2]+"""
-	    </td> <td>""" + r[4] +"""
+	    </td> <td> on """ + r[4] +"""
 	    </td> 
 	  </tr><tr>
 	    <td colspan="3">
-	       """+ r[0]+ """ 
+            """+ r[0]+ """
 	    </td>
 	  </tr>
 	</table>
