@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 import authen
 import Append
@@ -29,6 +29,7 @@ def login():
 		username = request.form["username"]
 		password = request.form["password"]
                 if (authen.authenticate(username, password)):
+                        session['n']=username
                         return redirect(url_for("storypage"))
                 else:
                         error = "Your Username or Password is incorrect. Please try again."
@@ -70,9 +71,26 @@ def storypage():
                 """ % (c[1],c[2])
     		StoryHTML = StoryHTML + commentHTML
         MainHTML = MainHTML + StoryHTML
-    		
+        
     return render_template("storypage.html", result=MainHTML)
 
+@app.route("/addStory",methods=["GET","POST"])
+def addStory():
+        conn = sqlite3.connect("StoryBase.db")
+        c = conn.cursor()
+        if (request.method=="GET"):
+                return render_template("addStory.html")
+        else:
+                Story = request.form["Story"]
+                Title = request.form["Title"]
+                q = """SELECT *
+                FROM StoryID
+                """
+                ID = c.execute(q)
+                Append.addStory(Story,Title,session['n'],ID[0],datetime.date.today().strftime("%B %d, %Y"))
+                return redirect(url_for("storypage"))
+
 if (__name__ == "__main__"):
-    app.debug = True
-    app.run(host='0.0.0.0', port=8000)
+        app.debug = True
+        app.secret_key = "secret"
+        app.run(host='0.0.0.0', port=8000)

@@ -31,4 +31,7 @@ q = """CREATE TABLE comments(storyID REAL,
 """
 curs.execute(q)
 connect.commit()
-
+q = """CREATE TABLE StoryID(storyID REAL);
+"""
+curs.execute(q)
+connect.commit()
