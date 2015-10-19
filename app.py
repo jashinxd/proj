@@ -76,15 +76,14 @@ def storypage():
     	""" % (r[3])
     	comments = c.execute(q)
     	for c in comments:
-		StoryHTML += '<p style="font-size:70%">'
+    		StoryHTML += '<p style="font-size:70%">'
     		commentHTML = """
     		%s <span style="color: #ff0000"> on %s </span>
                 <hr>
                 """ % (c[1],c[2])
 		commentHTML += "</p>"
     		StoryHTML = StoryHTML + commentHTML
-        MainHTML = MainHTML + StoryHTML    		
-        
+    	MainHTML = MainHTML + StoryHTML    		
     return render_template("storypage.html", result=MainHTML)
 
 @app.route("/addStory",methods=["GET","POST"])
@@ -96,7 +95,7 @@ def addStory():
         else:
                 Story = request.form["Story"]
                 Title = request.form["Title"]
-                Append.addStory(Story,Title,session['username'],randint(0,1000),datetime.date.today().strftime("%B %d, %Y"))
+                Append.addStory(Story,Title,session['username'],GreatestStoryID() + 1,datetime.date.today().strftime("%B %d, %Y"))
                 return redirect(url_for("storypage"))
 
 if (__name__ == "__main__"):
