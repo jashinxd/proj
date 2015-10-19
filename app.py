@@ -46,10 +46,8 @@ def storypage():
     FROM Stories;
     """
     conn = sqlite3.connect("StoryBase.db")
-    xonn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
     result = c.execute(q)
-    x = xonn.cursor()
     MainHTML = ""
     for r in result:
     	StoryHTML = """ 
@@ -76,7 +74,7 @@ def storypage():
         SELECT *
     	FROM comments where storyID = %s;
     	""" % (r[3])
-    	comments = x.execute(d)
+    	comments = c.execute(d)
     	for y in comments:
     		StoryHTML += '<p style="font-size:70%">'
     		commentHTML = """
