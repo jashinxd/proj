@@ -70,17 +70,17 @@ def storypage():
         <input type="submit" name="button" value=%s>
         </form>
         Comments: <br><hr>""" % (r[3])
-    	q="""
+    	d="""
         SELECT *
     	FROM comments where storyID = %s
     	""" % (r[3])
-    	comments = c.execute(q)
-    	for c in comments:
+    	comments = c.execute(d)
+    	for y in comments:
     		StoryHTML += '<p style="font-size:70%">'
     		commentHTML = """
     		%s <span style="color: #ff0000"> on %s </span>
                 <hr>
-                """ % (c[1],c[2])
+                """ % (y[1],y[2])
 		commentHTML += "</p>"
     		StoryHTML = StoryHTML + commentHTML
     	MainHTML = MainHTML + StoryHTML    		
