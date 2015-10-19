@@ -40,7 +40,7 @@ def login():
 @app.route("/storypage", methods=["POST","GET"])
 def storypage():
     if (request.method == "POST"):
-        Append.comment(request.form["button"],request.form["comment"],datetime.date.today().strftime("%B %d, %Y"))
+    	Append.comment(request.form["button"],request.form["comment"],datetime.date.today().strftime("%B %d, %Y"))
     q="""
     SELECT *
     FROM Stories
@@ -88,14 +88,12 @@ def storypage():
 
 @app.route("/addStory",methods=["GET","POST"])
 def addStory():
-        conn = sqlite3.connect("StoryBase.db")
-        c = conn.cursor()
         if (request.method=="GET"):
                 return render_template("addStory.html")
         else:
                 Story = request.form["Story"]
                 Title = request.form["Title"]
-                Append.addStory(Story,Title,session['username'],Append.GreatestStoryID() + 1,datetime.date.today().strftime("%B %d, %Y"))
+                Append.addStory(Story,Title,session['n'],Append.GreatestStoryID() + 1,datetime.date.today().strftime("%B,%d,%Y"))
                 return redirect(url_for("storypage"))
 
 if (__name__ == "__main__"):
