@@ -95,7 +95,7 @@ def addStory():
         else:
                 Story = request.form["Story"]
                 Title = request.form["Title"]
-                Append.addStory(Story,Title,session['username'],GreatestStoryID() + 1,datetime.date.today().strftime("%B %d, %Y"))
+                Append.addStory(Story,Title,session['username'],Append.GreatestStoryID() + 1,datetime.date.today().strftime("%B %d, %Y"))
                 return redirect(url_for("storypage"))
 
 if (__name__ == "__main__"):
