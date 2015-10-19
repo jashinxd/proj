@@ -1,6 +1,6 @@
 import sqlite3
 
-def GreatestStoryID(username,password):
+def GreatestStoryID():
     conn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
     q="""
