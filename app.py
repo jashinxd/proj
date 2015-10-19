@@ -51,12 +51,12 @@ def storypage():
     	StoryHTML = """ 
 	<table>
 	  <tr>
-	    <td style="font-size:150%"> """ + r[1] + """
-	    </td> <td>
+	    <td style="font-size:200%"> """ + r[1] + """
+	    </td> <td style="font-size:150%">
 	    by """+r[2]+"""
-	    </td> <td> on """ + r[4] +"""
+	    </td> <td style="font-size:150%"> on """ + r[4] +"""
 	    </td> 
-	  </tr><tr>
+	  </tr><tr style="font-size:120%">
 	    <td colspan="3">
             """+ r[0]+ """
 	    </td>
