@@ -43,7 +43,7 @@ def storypage():
     	Append.comment(request.form["button"],request.form["comment"],datetime.date.today().strftime("%B %d, %Y"))
     q="""
     SELECT *
-    FROM Stories
+    FROM Stories;
     """
     conn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
@@ -72,7 +72,7 @@ def storypage():
         Comments: <br><hr>""" % (r[3])
     	d="""
         SELECT *
-    	FROM comments where storyID = %s
+    	FROM comments where storyID = %s;
     	""" % (r[3])
     	comments = c.execute(d)
     	for y in comments:
