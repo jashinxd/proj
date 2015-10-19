@@ -12,19 +12,6 @@ def GreatestStoryID():
             x = r[3]
     return x
 
-def incrementID():
-    conn = sqlite3.connect("StoryBase.db")
-    c = conn.cursor()
-    q = """
-    SELECT *
-    FROM StoryID;
-    """
-    ID = c.execute(q)
-    q = """
-    UPDATE StoryID
-    SET storyID = %s;
-    """ % (ID + 1)
-
 def register(username,password):
     conn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
