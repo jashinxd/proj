@@ -46,11 +46,11 @@ def storypage():
     FROM Stories;
     """
     conn = sqlite3.connect("StoryBase.db")
-    xonn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
-    result = c.execute(q)
+    xonn = sqlite3.connect("StoryBase.db")
     x = xonn.cursor()
     MainHTML = ""
+    result = c.execute(q)
     for r in result:
     	StoryHTML = """ 
 	<table>
