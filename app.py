@@ -3,6 +3,7 @@ import sqlite3
 import authen
 import Append
 import datetime
+from random import randint
 
 app = Flask(__name__)
 
@@ -28,6 +29,7 @@ def login():
 	else:
 		username = request.form["username"]
 		password = request.form["password"]
+		session['username'] = request.form["username"]
                 if (authen.authenticate(username, password)):
                         session['n']=username
                         return redirect(url_for("storypage"))
@@ -94,11 +96,8 @@ def addStory():
         else:
                 Story = request.form["Story"]
                 Title = request.form["Title"]
-                q = """SELECT *
-                FROM StoryID
-                """
-                ID = c.execute(q)
-                Append.addStory(Story,Title,session['n'],1,datetime.date.today().strftime("%B %d, %Y"))
+
+                Append.addStory(Story,Title,session['username'],randint(0,1000),datetime.date.today().strftime("%B %d, %Y"))
                 return redirect(url_for("storypage"))
 
 if (__name__ == "__main__"):
