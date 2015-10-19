@@ -3,6 +3,7 @@ import sqlite3
 import authen
 import Append
 import datetime
+from random import randint
 
 app = Flask(__name__)
 
@@ -28,6 +29,7 @@ def login():
 	else:
 		username = request.form["username"]
 		password = request.form["password"]
+		session['username'] = request.form["username"]
                 if (authen.authenticate(username, password)):
                         session['n']=username
                         return redirect(url_for("storypage"))
@@ -38,25 +40,27 @@ def login():
 @app.route("/storypage", methods=["POST","GET"])
 def storypage():
     if (request.method == "POST"):
-        Append.comment(request.form["button"],request.form["comment"],datetime.date.today().strftime("%B %d, %Y"))
+    	Append.comment(request.form["button"],request.form["comment"],datetime.date.today().strftime("%B %d, %Y"))
     q="""
     SELECT *
-    FROM Stories
+    FROM Stories;
     """
     conn = sqlite3.connect("StoryBase.db")
     c = conn.cursor()
-    result = c.execute(q)
+    xonn = sqlite3.connect("StoryBase.db")
+    x = xonn.cursor()
     MainHTML = ""
+    result = c.execute(q)
     for r in result:
     	StoryHTML = """ 
 	<table>
 	  <tr>
-	    <td style="font-size:150%"> """ + r[1] + """
-	    </td> <td>
+	    <td style="font-size:200%"> """ + r[1] + """
+	    </td> <td style="font-size:150%">
 	    by """+r[2]+"""
-	    </td> <td> on """ + r[4] +"""
+	    </td> <td style="font-size:150%"> on """ + r[4] +"""
 	    </td> 
-	  </tr><tr>
+	  </tr><tr style="font-size:120%">
 	    <td colspan="3">
             """+ r[0]+ """
 	    </td>
@@ -68,37 +72,30 @@ def storypage():
         <input type="submit" name="button" value=%s>
         </form>
         Comments: <br><hr>""" % (r[3])
-    	q="""
+    	d="""
         SELECT *
-    	FROM comments where storyID = %s
+    	FROM comments where storyID = %s;
     	""" % (r[3])
-    	comments = c.execute(q)
-    	for c in comments:
-		StoryHTML += '<p style="font-size:70%">'
+    	comments = x.execute(d)
+    	for y in comments:
+    		StoryHTML += '<p style="font-size:70%">'
     		commentHTML = """
     		%s <span style="color: #ff0000"> on %s </span>
                 <hr>
-                """ % (c[1],c[2])
+                """ % (y[1],y[2])
 		commentHTML += "</p>"
     		StoryHTML = StoryHTML + commentHTML
-        MainHTML = MainHTML + StoryHTML    		
-        
+    	MainHTML = MainHTML + StoryHTML    		
     return render_template("storypage.html", result=MainHTML)
 
 @app.route("/addStory",methods=["GET","POST"])
 def addStory():
-        conn = sqlite3.connect("StoryBase.db")
-        c = conn.cursor()
         if (request.method=="GET"):
                 return render_template("addStory.html")
         else:
                 Story = request.form["Story"]
                 Title = request.form["Title"]
-                q = """SELECT *
-                FROM StoryID
-                """
-                ID = c.execute(q)
-                Append.addStory(Story,Title,session['n'],1,datetime.date.today().strftime("%B %d, %Y"))
+                Append.addStory(Story,Title,session['n'],Append.GreatestStoryID() + 1,datetime.date.today().strftime("%B,%d,%Y"))
                 return redirect(url_for("storypage"))
 
 if (__name__ == "__main__"):
