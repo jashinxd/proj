@@ -9,3 +9,7 @@ Albert -- Backend
 Ari -- Middleware
 
 Rong -- Frontend
+
+
+#Second Part of Project
+Jason Shin -- Backend
