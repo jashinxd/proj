@@ -1,12 +1,11 @@
-<html>
-  <head> <title> Story Page </title> </head>
-  <h1 align="center" style="font-size:300%">Stories</h1>
+{% extends "base.html" %}
 
-  <body bgcolor="#CEECF5">
+{% block title %} DopeSQL | Story Page {% endblock title%}
 
-  <body style="font-size:150%"> 
+{% block body %} 
+
     Like what you see? <a href = "/addStory">Add a Story!</a> <br>
     {{result|safe}}
-  </body>
-</html>
+
+{% endblock body %} 
 

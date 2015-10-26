@@ -1,16 +1,7 @@
-<html>
+{% extends "base.html" %}
 
-<head>
-	<title>StoryBase</title>
-</head>
-	<h1 align="center" style="font-size:350%">StoryBase</h1>
-<body bgcolor="#CEECF5">
-<p style="font-size:130%">
-	Welcome to StoryBase, a dynamic story creation and editing website. <br>
-	Please login <a href = "/login">Login </a> <br>
-        or register <a href = "/register">Register </a>
-</p>
+{% block title %} DopeSQL | Home {% endblock title%}
 
-
-</body>
-</html>
+{% block body %} 
+Welcome to StoryBase, a dynamic story creation and editing website. <br>
+{% endblock body %}
